@@ -72,6 +72,8 @@
     "karma-jasmine-html-reporter": "^1.7.0",
     "karma-sonarqube-reporter": "^1.4.0",
     "karma-trx-reporter": "^0.4.3",
+    "nerdbank-gitversioning": "^3.4.244",
+    "ng-packagr": "^13.0.3",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   }
