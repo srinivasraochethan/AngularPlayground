@@ -1,5 +1,5 @@
 {
-  "name": "angular-upgrade",
+  "name": "angular13-project",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -75,6 +75,10 @@
     "nerdbank-gitversioning": "^3.4.244",
     "ng-packagr": "^13.0.3",
     "ts-node": "^10.4.0",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "webpack": "^5.64.0"
+  },
+  "resolutions": {
+    "webpack": "^5.64.0"
   }
 }
