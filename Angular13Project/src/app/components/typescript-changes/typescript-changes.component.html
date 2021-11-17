@@ -1,0 +1,78 @@
+<div class="overview">
+  <div class="overview-wrapper">
+    <div>
+      <h2>Typescript 4.4</h2>
+    </div>
+    <mat-divider></mat-divider>
+    <br/>
+    <div>
+      <p>TypeScript 4.4 support has been added; versions older than <strong style="color: red;">TypeScript 4.4.2 are no longer supported</strong> in the core</p>
+      <div style="display: flex; align-items: center; vertical-align: middle;">
+        <div>
+          <h3 style="text-decoration: underline; font-weight: 600; margin-bottom: 0px;">Some of the big highlights of TS4.4 include:</h3>
+        </div>
+        <div>
+          <button mat-icon-button aria-label="link to node.js" color="primary" (click)="onNavigate()">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </div>
+      </div>
+      <ol>
+        <li>Control Flow Analysis of Aliased Conditions and Discriminants</li>
+        <li>Symbol and Template String Pattern Index Signatures</li>
+        <li>Defaulting to the unknown Type in Catch Variables (–useUnknownInCatchVariables)</li>
+        <li>Exact Optional Property Types (–exactOptionalPropertyTypes)</li>
+      </ol>
+    </div>
+    <div>
+      <h3 style="text-decoration: underline; font-weight: 600;">What this means for Angular</h3>
+      <div>
+        <h4 style="font-weight: 600;">Comparing package.json (Angular v12 v/s Angular v13)</h4>
+        <img src="../../../assets/typescript_package_diff.PNG" alt="package.json difference">
+      </div>
+      <br/>
+      <div>
+        <h4 style="font-weight: 600;">Comparing tsconfig.json (Angular v12 v/s Angular v13)</h4>
+        <p>Two new compiler options have been introduced:</p>
+        <ol>
+          <li>noImplicitOverride</li>
+          <li>noPropertyAccessFromIndexSignature</li>
+        </ol>
+        <img src="../../../assets/tpescript_tsconfig_diff.PNG" alt="package.json difference">
+        <br/>
+        <br/>
+        <div>
+          <h4 style="font-weight: 600;">noImplicitOverride Example</h4>
+          <p>I have created a dummy component which has a method <strong>"initialize"</strong>. Please see screenshot below</p>
+          <img src="../../../assets/typescript_basecomponent.PNG" alt="basecomponent">
+          <br/>
+          <p>I will then extend the above Base Component onto another component and try to <strong>override the "initialize"</strong> method</p>
+          <img src="../../../assets/typescript_extendedcomponent.png" alt="basecomponent">
+          <br/>
+          <p>In order to override the <strong>override the "initialize"</strong> method, we need to add <strong>"override" keyword</strong></p>
+          <img src="../../../assets/typescript_extendedcomponent_override.png" alt="basecomponent">
+        </div>
+        <br/>
+        <br/>
+        <div>
+          <h4 style="font-weight: 600;">noPropertyAccessFromIndexSignature Example</h4>
+          <p>I have created an interface called Hero, which has property type defined, and other properties have been defined dynamically using [key: string] accessor, then I am trying to add a new property called alterEgo at the runtime, since I have a dynamic signature. In Angular v12, this was ok, and there was no error displayed. But now, that flexibility is gone and the dynamic signature cannot be added with dot accessor anymore. See the error below</p>
+          <img style="height: 80%; width: 80%;" src="../../../assets/typescript_noProperty_error.png" alt="basecomponent">
+          <br/>
+          <p>Instead of dot accessor, we need to add the properties as string accessor. Please see below</p>
+          <img src="../../../assets/typescript_noProperty_noerror.png" alt="basecomponent">
+        </div>
+        <br/>
+        <br/>
+        <div>
+          <h4 style="font-weight: 600;">Static block introduction and Example</h4>
+          <p>Static blocks can be used for initializing static variables/properties. This can help us to write more complex initialization code for static members.</p>
+          <p>These static blocks allow us to write a sequence of statements with their own scope that can access private fields within the containing class. That means that we can write initialization code with all the capabilities of writing statements, no leakage of variables, and full access to our class’s internals</p>
+          <img src="../../../assets/typescript_static.PNG" alt="basecomponent">
+          <br/>
+          <p>There are many more features, please go through Typescript 4.4 documentation in conjunction with Angular.io</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

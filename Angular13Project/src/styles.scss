@@ -2,3 +2,37 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.overview {
+  display: block;
+  padding: 5px;
+  // width: calc(100vw - 400px);
+
+  .overview-wrapper {
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.2);
+    background: #fff;
+    padding: 1%;
+    font-size: medium;
+    height: calc(100vh - 115px);
+    overflow: auto;
+  }
+
+  ol li {
+    background: #ffe5e5;
+    padding: 5px;
+    margin-left: 35px;
+  }
+}
+
+pre {
+  background-color: whitesmoke;
+  code {
+    padding: 1rem;
+    vertical-align: top;
+    margin: 1rem;
+    color: 000;
+  }
+}
+
+

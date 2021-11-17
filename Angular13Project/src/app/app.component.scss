@@ -1,0 +1,15 @@
+.drawer-container {
+  width: 100%;
+  height: calc(100vh - 70px);
+  border-bottom: 1px solid #ebebeb;
+
+  .side-container {
+    width: 352px;
+  }
+  .main-container {
+    width: calc(100vw - 352px);
+  }
+  mat-nav-list a.active {
+    background: #ede5a2;
+  }
+}
