@@ -1,0 +1,77 @@
+<div class="overview">
+  <div class="overview-wrapper">
+    <div>
+      <h2>Node.js Changes</h2>
+    </div>
+    <mat-divider></mat-divider>
+    <br/>
+    <div>
+      <ol>
+        <li>Node.js 16 was added to the node engines.</li>
+        <li>Node.js versions older than v12.20 are no longer supported, due to <strong>Angular packages using the Node.js package exports feature with subpath patterns</strong></li>
+      </ol>
+      <div style="display: flex; align-items: center; vertical-align: middle;">
+        <div>
+          <h3 style="text-decoration: underline; font-weight: 600; margin-bottom: 0px;">More about exports feature with subpath</h3>
+        </div>
+        <div>
+          <button mat-icon-button aria-label="link to node.js" color="primary" (click)="onNavigate()">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </div>
+      </div>
+      <ol>
+        <li>In a package.json file, two fields can define entry points for a package: <strong>"main" and "exports"</strong>.</li>
+        <li>The <strong>"main"</strong> field is supported in all versions of Node.js, but its capabilities are limited: <strong>it only defines the main entry point of the package</strong>.</li>
+        <li>The <strong>"exports"</strong> field provides an alternative to <strong>"main"</strong> where the package main entry point can be defined while also encapsulating the package, preventing any other entry points besides those defined in <strong>"exports"</strong>. This encapsulation allows module authors to define a public interface for their package.
+        </li>
+      </ol>
+      <div>
+        <p>To set the main entry point for a package, it is advisable to define both "exports" and "main" in the package’s package.json file:</p>
+        <pre>
+          <code>
+            {{'
+              {
+                "main": "./main.js",
+                "exports": "./main.js"
+              }
+            '}}
+          </code>
+        </pre>
+        <p>When the "exports" field is defined, all subpaths of the package are encapsulated and no longer available to importers. For example, require('pkg/subpath.js') throws an <strong>ERR_PACKAGE_PATH_NOT_EXPORTED error</strong>.</p>
+        <p>This encapsulation of exports provides more reliable guarantees about package interfaces for tools and when handling semver upgrades for a package. It is not a strong encapsulation since a direct require of any absolute subpath of the package such as require('/path/to/node_modules/pkg/subpath.js') will still load subpath.js.</p>
+        <p>When using the "exports" field, custom subpaths can be defined along with the main entry point by treating the main entry point as the "." subpath:</p>
+        <pre>
+          <code>
+            {{'
+              {
+                "main": "./main.js",
+                "exports": {
+                  ".": "./main.js",
+                  "./submodule": "./src/submodule.js"
+                }
+              }
+            '}}
+          </code>
+        </pre>
+        <p>Now only the defined subpath in "exports" can be imported by a consumer:</p>
+        <pre>
+          <code>
+            {{'
+              import submodule from \'es-module-package/submodule\';
+            '}}
+          </code>
+        </pre>
+        <p>While other subpaths will error:</p>
+        <pre>
+          <code>
+            {{'
+              import submodule from \'es-module-package/private-module.js\';
+              // Throws ERR_PACKAGE_PATH_NOT_EXPORTED
+            '}}
+          </code>
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
